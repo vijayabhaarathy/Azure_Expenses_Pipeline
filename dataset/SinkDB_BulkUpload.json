@@ -1,0 +1,80 @@
+{
+	"name": "SinkDB_BulkUpload",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL_Expense_Sink",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SourceFileName": {
+				"type": "string",
+				"defaultValue": "Historical_Bulk_Load"
+			},
+			"AccountNo_Ref": {
+				"type": "string",
+				"defaultValue": "HISTORICAL_ACC_REF"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TransactionDate",
+				"type": "date"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "ExpenseType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CardName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubCategory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AccountNo_Ref",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SourceFileName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProcessingTimestamp",
+				"type": "datetime2",
+				"scale": 7
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Transactions"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

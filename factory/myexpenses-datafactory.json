@@ -1,0 +1,9 @@
+{
+	"name": "myexpenses-datafactory",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "eeff57d9-9ea2-4b55-bd9e-04f754339b0a",
+		"tenantId": "4dbc0a24-85b3-42fa-9bda-511e124b4972"
+	}
+}

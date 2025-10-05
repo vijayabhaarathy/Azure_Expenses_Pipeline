@@ -1,0 +1,65 @@
+{
+	"name": "DS_Historical_Source_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Historical_Blob_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "BulkUpload_2025_Jan-Mar.csv",
+				"container": "myexpenses-bulkupload"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CardName",
+				"type": "String"
+			},
+			{
+				"name": "AccountType",
+				"type": "String"
+			},
+			{
+				"name": "TransactionDate",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "Amount",
+				"type": "String"
+			},
+			{
+				"name": "ExpenseType",
+				"type": "String"
+			},
+			{
+				"name": "SubCategory",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "AccountNo_Ref",
+				"type": "String"
+			},
+			{
+				"name": "SourceFileName",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
