@@ -227,7 +227,10 @@
 							{
 								"referenceName": "SinkDB_BulkUpload",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"SourceFileName": "Historical_Bulk_Load",
+									"AccountNo_Ref": "HISTORICAL_ACC_REF"
+								}
 							}
 						]
 					}
@@ -364,6 +367,14 @@
 					},
 					{
 						"name": "SourceFileName",
+						"type": "String"
+					},
+					{
+						"name": "StatementDate",
+						"type": "String"
+					},
+					{
+						"name": "ProcessingTimeStamp",
 						"type": "String"
 					}
 				]
