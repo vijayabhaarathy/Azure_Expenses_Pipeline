@@ -5,12 +5,20 @@
 			"referenceName": "LS_Historical_Blob_Source",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Filename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "BulkUpload_2025_Jan-Mar.csv",
+				"fileName": {
+					"value": "@dataset().Filename",
+					"type": "Expression"
+				},
 				"container": "myexpenses-bulkupload"
 			},
 			"columnDelimiter": ",",

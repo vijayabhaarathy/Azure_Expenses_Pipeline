@@ -183,7 +183,10 @@
 				"inputs": [
 					{
 						"referenceName": "DS_Historical_Source_CSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": "@pipeline().parameters.Filename"
+						}
 					}
 				],
 				"outputs": [
