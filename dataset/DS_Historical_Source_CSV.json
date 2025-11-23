@@ -58,6 +58,14 @@
 			{
 				"name": "SourceFileName",
 				"type": "String"
+			},
+			{
+				"name": "StatementDate",
+				"type": "String"
+			},
+			{
+				"name": "ProcessingTimeStamp",
+				"type": "String"
 			}
 		]
 	},
