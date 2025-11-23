@@ -1,0 +1,27 @@
+{
+	"name": "bulkupload_trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_BulkUpload_Excel",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"ProcessingTimeStamp": "Bulk"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/myexpenses-bulkupload/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
