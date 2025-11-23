@@ -27,6 +27,18 @@
 			"type": "string",
 			"defaultValue": "CloudSAac3e3eda"
 		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
+			"type": "string",
+			"defaultValue": "@trigger().startTime"
+		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"bulkupload_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +80,15 @@
 					},
 					"LS_AzureSQL_Expense_Sink_properties_typeProperties_userName": {
 						"value": "[parameters('LS_AzureSQL_Expense_Sink_properties_typeProperties_userName')]"
+					},
+					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
+						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]"
+					},
+					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename')]"
+					},
+					"bulkupload_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('bulkupload_trigger_properties_typeProperties_scope')]"
 					}
 				}
 			},

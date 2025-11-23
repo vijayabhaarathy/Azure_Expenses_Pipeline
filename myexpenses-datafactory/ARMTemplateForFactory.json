@@ -26,6 +26,18 @@
 		"LS_AzureSQL_Expense_Sink_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "CloudSAac3e3eda"
+		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
+			"type": "string",
+			"defaultValue": "@trigger().startTime"
+		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"bulkupload_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
 		}
 	},
 	"variables": {
@@ -220,7 +232,9 @@
 							{
 								"referenceName": "DS_Historical_Source_CSV",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Filename": "@pipeline().parameters.Filename"
+								}
 							}
 						],
 						"outputs": [
@@ -242,6 +256,9 @@
 					"ProcessingTimeStamp": {
 						"type": "String",
 						"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
+					},
+					"Filename": {
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -321,12 +338,20 @@
 					"referenceName": "LS_Historical_Blob_Source",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "BulkUpload_2025_Jan-Mar.csv",
+						"fileName": {
+							"value": "@dataset().Filename",
+							"type": "Expression"
+						},
 						"container": "myexpenses-bulkupload"
 					},
 					"columnDelimiter": ",",
@@ -499,6 +524,39 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/bulkupload_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_BulkUpload_Excel",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"ProcessingTimeStamp": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]",
+							"Filename": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/myexpenses-bulkupload/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('bulkupload_trigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_BulkUpload_Excel')]"
+			]
 		}
 	]
 }
