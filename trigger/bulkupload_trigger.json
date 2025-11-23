@@ -11,7 +11,7 @@
 				},
 				"parameters": {
 					"ProcessingTimeStamp": "@trigger().startTime",
-					"Filename": "@{last(split(triggerBody().subject,'/'))}"
+					"Filename": "@{last(split(trigger().outputs.body.subject,'/'))}"
 				}
 			}
 		],
