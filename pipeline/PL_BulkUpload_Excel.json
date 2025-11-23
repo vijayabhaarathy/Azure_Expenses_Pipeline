@@ -162,30 +162,6 @@
 							},
 							{
 								"source": {
-									"name": "SourceFileName",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SourceFileName",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ProcessingTimeStamp",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ProcessingTimestamp",
-									"type": "DateTime",
-									"physicalType": "datetime2"
-								}
-							},
-							{
-								"source": {
 									"name": "StatementDate",
 									"type": "String",
 									"physicalType": "String"
@@ -222,6 +198,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"ProcessingTimeStamp": {
+				"type": "String",
+				"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2025-10-05T12:41:36Z"
 	},
