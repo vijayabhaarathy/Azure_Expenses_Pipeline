@@ -205,6 +205,9 @@
 			"ProcessingTimeStamp": {
 				"type": "String",
 				"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
+			},
+			"Filename": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
