@@ -462,6 +462,30 @@
 											"type": "String",
 											"physicalType": "nvarchar"
 										}
+									},
+									{
+										"source": {
+											"name": "ProcessingTimeStamp",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProcessingTimestamp",
+											"type": "DateTime",
+											"physicalType": "datetime2"
+										}
+									},
+									{
+										"source": {
+											"name": "StatementDate",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "StatementDate",
+											"type": "Date",
+											"physicalType": "date"
+										}
 									}
 								],
 								"typeConversion": true,
