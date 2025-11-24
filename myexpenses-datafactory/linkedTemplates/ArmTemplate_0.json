@@ -149,7 +149,8 @@
 				},
 				"parameters": {
 					"Filename": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "@dataset().Filename"
 					}
 				},
 				"annotations": [],
