@@ -7,12 +7,13 @@
 		},
 		"parameters": {
 			"AccountNo_Ref": {
-				"type": "string",
-				"defaultValue": "Bulk"
+				"type": "string"
 			},
 			"ProcessingTimestamp": {
-				"type": "string",
-				"defaultValue": "@dataset().ProcessingTimestamp"
+				"type": "string"
+			},
+			"SourceFileName": {
+				"type": "string"
 			}
 		},
 		"annotations": [],

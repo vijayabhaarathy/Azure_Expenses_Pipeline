@@ -5,13 +5,24 @@
 			"referenceName": "LS_Historical_Blob_Source",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Filename": {
+				"type": "string"
+			},
+			"ProcessingTimestamp": {
+				"type": "string"
+			},
+			"AccountNo_Ref": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@dataset().SourceFileName",
+					"value": "@dataset().Filename",
 					"type": "Expression"
 				},
 				"container": "myexpenses-bulkupload"
@@ -60,6 +71,10 @@
 			},
 			{
 				"name": "StatementDate",
+				"type": "String"
+			},
+			{
+				"name": "SourceFileName",
 				"type": "String"
 			}
 		]
