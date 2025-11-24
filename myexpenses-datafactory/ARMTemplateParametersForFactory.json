@@ -23,7 +23,7 @@
 		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
 			"value": "@trigger().startTime"
 		},
-		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
 			"value": "@triggerBody().fileName"
 		},
 		"bulkupload_trigger_properties_typeProperties_scope": {

@@ -31,7 +31,7 @@
 			"type": "string",
 			"defaultValue": "@trigger().startTime"
 		},
-		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
@@ -84,8 +84,8 @@
 					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
 						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]"
 					},
-					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
-						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename')]"
+					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
+						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName')]"
 					},
 					"bulkupload_trigger_properties_typeProperties_scope": {
 						"value": "[parameters('bulkupload_trigger_properties_typeProperties_scope')]"

@@ -31,7 +31,7 @@
 			"type": "string",
 			"defaultValue": "@trigger().startTime"
 		},
-		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
@@ -89,7 +89,7 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"Filename": {
+					"SourceFileName": {
 						"type": "string"
 					}
 				},
@@ -99,7 +99,7 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": {
-							"value": "@dataset().Filename",
+							"value": "@dataset().SourceFileName",
 							"type": "Expression"
 						},
 						"container": "myexpenses-bulkupload"
@@ -432,8 +432,8 @@
 								"referenceName": "DS_Historical_Source_CSV",
 								"type": "DatasetReference",
 								"parameters": {
-									"Filename": {
-										"value": "@pipeline().parameters.Filename",
+									"SourceFileName": {
+										"value": "@pipeline().parameters.SourceFileName",
 										"type": "Expression"
 									}
 								}
@@ -463,7 +463,7 @@
 						"type": "String",
 						"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
 					},
-					"Filename": {
+					"SourceFileName": {
 						"type": "string"
 					}
 				},
@@ -491,7 +491,7 @@
 						},
 						"parameters": {
 							"ProcessingTimeStamp": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]",
-							"Filename": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename')]"
+							"SourceFileName": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName')]"
 						}
 					}
 				],
