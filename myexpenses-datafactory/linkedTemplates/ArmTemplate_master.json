@@ -33,7 +33,7 @@
 		},
 		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_Filename": {
 			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
+			"defaultValue": "@{last(split(trigger().outputs.body.subject,'/'))}"
 		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"type": "string",
