@@ -70,6 +70,10 @@
 				"name": "ProcessingTimestamp",
 				"type": "datetime2",
 				"scale": 7
+			},
+			{
+				"name": "StatementDate",
+				"type": "date"
 			}
 		],
 		"typeProperties": {
