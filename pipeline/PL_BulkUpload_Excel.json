@@ -183,10 +183,7 @@
 				"inputs": [
 					{
 						"referenceName": "DS_Historical_Source_CSV",
-						"type": "DatasetReference",
-						"parameters": {
-							"Filename": "@pipeline().parameters.Filename"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -194,8 +191,11 @@
 						"referenceName": "SinkDB_BulkUpload",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": "Historical_Bulk_Load",
-							"AccountNo_Ref": "HISTORICAL_ACC_REF"
+							"SourceFileName": {
+								"value": "@pipeline().parameters.Filename",
+								"type": "Expression"
+							},
+							"AccountNo_Ref": "Bulk"
 						}
 					}
 				]
