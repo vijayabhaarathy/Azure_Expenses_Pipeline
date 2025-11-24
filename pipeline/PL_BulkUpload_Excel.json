@@ -185,6 +185,10 @@
 						"referenceName": "DS_Historical_Source_CSV",
 						"type": "DatasetReference",
 						"parameters": {
+							"Filename": {
+								"value": "@pipeline().parameters.SourceFileName",
+								"type": "Expression"
+							},
 							"ProcessingTimestamp": {
 								"value": "@pipeline().parameters.ProcessingTimeStamp",
 								"type": "Expression"
@@ -197,7 +201,10 @@
 						"referenceName": "SinkDB_BulkUpload",
 						"type": "DatasetReference",
 						"parameters": {
-							"AccountNo_Ref": "Bulk",
+							"AccountNo_Ref": {
+								"value": "@pipeline().parameters.AccountNo_Ref",
+								"type": "Expression"
+							},
 							"ProcessingTimestamp": {
 								"value": "@pipeline().parameters.ProcessingTimeStamp",
 								"type": "Expression"
@@ -218,6 +225,10 @@
 			},
 			"SourceFileName": {
 				"type": "String"
+			},
+			"AccountNo_Ref": {
+				"type": "String",
+				"defaultValue": "Bulk"
 			}
 		},
 		"annotations": [],

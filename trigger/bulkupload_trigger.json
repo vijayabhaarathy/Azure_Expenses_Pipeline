@@ -11,7 +11,8 @@
 				},
 				"parameters": {
 					"ProcessingTimeStamp": "@trigger().startTime",
-					"SourceFileName": "@triggerBody().fileName"
+					"SourceFileName": "@triggerBody().fileName",
+					"AccountNo_Ref": "Bulk"
 				}
 			}
 		],
