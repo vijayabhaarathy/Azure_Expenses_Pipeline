@@ -26,6 +26,9 @@
 		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
 			"value": "@triggerBody().fileName"
 		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref": {
+			"value": "Bulk"
+		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
 		},

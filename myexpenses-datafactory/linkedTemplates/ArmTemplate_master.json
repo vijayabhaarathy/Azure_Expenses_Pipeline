@@ -35,6 +35,10 @@
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref": {
+			"type": "string",
+			"defaultValue": "Bulk"
+		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
@@ -86,6 +90,9 @@
 					},
 					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName": {
 						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName')]"
+					},
+					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref": {
+						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref')]"
 					},
 					"bulkupload_trigger_properties_typeProperties_scope": {
 						"value": "[parameters('bulkupload_trigger_properties_typeProperties_scope')]"

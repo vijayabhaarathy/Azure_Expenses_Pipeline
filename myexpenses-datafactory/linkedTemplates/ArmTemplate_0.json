@@ -35,6 +35,10 @@
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
+		"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref": {
+			"type": "string",
+			"defaultValue": "Bulk"
+		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
@@ -89,7 +93,10 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"SourceFileName": {
+					"Filename": {
+						"type": "string"
+					},
+					"ProcessingTimestamp": {
 						"type": "string"
 					}
 				},
@@ -99,7 +106,7 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": {
-							"value": "@dataset().SourceFileName",
+							"value": "@dataset().Filename",
 							"type": "Expression"
 						},
 						"container": "myexpenses-bulkupload"
@@ -149,6 +156,10 @@
 					{
 						"name": "StatementDate",
 						"type": "String"
+					},
+					{
+						"name": "SourceFileName",
+						"type": "String"
 					}
 				]
 			},
@@ -166,17 +177,14 @@
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
-					"SourceFileName": {
-						"type": "string",
-						"defaultValue": "@dataset().SourceFileName"
-					},
 					"AccountNo_Ref": {
-						"type": "string",
-						"defaultValue": "Bulk"
+						"type": "string"
 					},
 					"ProcessingTimestamp": {
-						"type": "string",
-						"defaultValue": "@dataset().ProcessingTimestamp"
+						"type": "string"
+					},
+					"SourceFileName": {
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -233,6 +241,10 @@
 						"name": "ProcessingTimestamp",
 						"type": "datetime2",
 						"scale": 7
+					},
+					{
+						"name": "StatementDate",
+						"type": "date"
 					}
 				],
 				"typeProperties": {
@@ -433,8 +445,12 @@
 								"referenceName": "DS_Historical_Source_CSV",
 								"type": "DatasetReference",
 								"parameters": {
-									"SourceFileName": {
+									"Filename": {
 										"value": "@pipeline().parameters.SourceFileName",
+										"type": "Expression"
+									},
+									"ProcessingTimestamp": {
+										"value": "@pipeline().parameters.ProcessingTimeStamp",
 										"type": "Expression"
 									}
 								}
@@ -445,13 +461,16 @@
 								"referenceName": "SinkDB_BulkUpload",
 								"type": "DatasetReference",
 								"parameters": {
-									"SourceFileName": {
-										"value": "@pipeline().parameters.SourceFileName",
+									"AccountNo_Ref": {
+										"value": "@pipeline().parameters.AccountNo_Ref",
 										"type": "Expression"
 									},
-									"AccountNo_Ref": "Bulk",
 									"ProcessingTimestamp": {
 										"value": "@pipeline().parameters.ProcessingTimeStamp",
+										"type": "Expression"
+									},
+									"SourceFileName": {
+										"value": "@pipeline().parameters.SourceFileName",
 										"type": "Expression"
 									}
 								}
@@ -468,7 +487,10 @@
 						"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
 					},
 					"SourceFileName": {
-						"type": "string",
+						"type": "String"
+					},
+					"AccountNo_Ref": {
+						"type": "String",
 						"defaultValue": "Bulk"
 					}
 				},
@@ -496,7 +518,8 @@
 						},
 						"parameters": {
 							"ProcessingTimeStamp": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]",
-							"SourceFileName": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName')]"
+							"SourceFileName": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_SourceFileName')]",
+							"AccountNo_Ref": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_AccountNo_Ref')]"
 						}
 					}
 				],
