@@ -170,7 +170,8 @@
 						"type": "string"
 					},
 					"AccountNo_Ref": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "Bulk"
 					},
 					"ProcessingTimestamp": {
 						"type": "string"
