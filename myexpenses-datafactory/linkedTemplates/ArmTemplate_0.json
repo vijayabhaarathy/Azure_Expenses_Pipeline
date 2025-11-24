@@ -94,7 +94,8 @@
 				},
 				"parameters": {
 					"Filename": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "@dataset().FileName"
 					},
 					"ProcessingTimestamp": {
 						"type": "string"
@@ -292,21 +293,6 @@
 								"sqlWriterUseTableLock": false
 							},
 							"enableStaging": false,
-							"enableSkipIncompatibleRow": false,
-							"logSettings": {
-								"enableCopyActivityLog": true,
-								"copyActivityLogSettings": {
-									"logLevel": "Warning",
-									"enableReliableLogging": true
-								},
-								"logLocationSettings": {
-									"linkedServiceName": {
-										"referenceName": "LS_Historical_Blob_Source",
-										"type": "LinkedServiceReference"
-									},
-									"path": "logs"
-								}
-							},
 							"translator": {
 								"type": "TabularTranslator",
 								"mappings": [
@@ -317,7 +303,8 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "@{formatDateTime(parseDate(item().TransactionDate, 'dd-MM-yyyy'), 'yyyy-MM-dd')}",
+											"name": "TransactionDate",
+											"type": "Date",
 											"physicalType": "date"
 										}
 									},
@@ -498,8 +485,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_Historical_Source_CSV')]",
-				"[concat(variables('factoryId'), '/datasets/SinkDB_BulkUpload')]",
-				"[concat(variables('factoryId'), '/linkedServices/LS_Historical_Blob_Source')]"
+				"[concat(variables('factoryId'), '/datasets/SinkDB_BulkUpload')]"
 			]
 		},
 		{
