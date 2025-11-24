@@ -317,8 +317,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "TransactionDate",
-											"type": "Date",
+											"name": "@{formatDateTime(parseDate(item().TransactionDate, 'dd-MM-yyyy'), 'yyyy-MM-dd')}",
 											"physicalType": "date"
 										}
 									},
