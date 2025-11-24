@@ -84,7 +84,7 @@
 							"logSettings": {
 								"enableCopyActivityLog": true,
 								"copyActivityLogSettings": {
-									"logLevel": "Info",
+									"logLevel": "Warning",
 									"enableReliableLogging": true
 								},
 								"logLocationSettings": {
@@ -219,14 +219,6 @@
 											"type": "Date",
 											"physicalType": "date"
 										}
-									},
-									{
-										"source": {
-											"name": "SourceFileName"
-										},
-										"sink": {
-											"name": "SourceFileName"
-										}
 									}
 								],
 								"typeConversion": true,
@@ -253,7 +245,10 @@
 								"referenceName": "SinkDB_BulkUpload",
 								"type": "DatasetReference",
 								"parameters": {
-									"SourceFileName": "Bulk",
+									"SourceFileName": {
+										"value": "@pipeline().parameters.SourceFileName",
+										"type": "Expression"
+									},
 									"AccountNo_Ref": "Bulk",
 									"ProcessingTimestamp": {
 										"value": "@pipeline().parameters.ProcessingTimeStamp",
@@ -375,14 +370,15 @@
 				"parameters": {
 					"SourceFileName": {
 						"type": "string",
-						"defaultValue": "Bulk"
+						"defaultValue": "@dataset().SourceFileName"
 					},
 					"AccountNo_Ref": {
 						"type": "string",
 						"defaultValue": "Bulk"
 					},
 					"ProcessingTimestamp": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "@dataset().ProcessingTimestamp"
 					}
 				},
 				"annotations": [],
