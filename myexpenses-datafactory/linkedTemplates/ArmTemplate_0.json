@@ -305,7 +305,7 @@
 										"referenceName": "LS_Historical_Blob_Source",
 										"type": "LinkedServiceReference"
 									},
-									"path": "logs/copyactivity-logs"
+									"path": "logs"
 								}
 							},
 							"translator": {
