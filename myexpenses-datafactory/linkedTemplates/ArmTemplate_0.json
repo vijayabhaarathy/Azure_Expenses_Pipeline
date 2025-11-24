@@ -167,7 +167,8 @@
 				},
 				"parameters": {
 					"SourceFileName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "Bulk"
 					},
 					"AccountNo_Ref": {
 						"type": "string",
@@ -443,10 +444,7 @@
 								"referenceName": "SinkDB_BulkUpload",
 								"type": "DatasetReference",
 								"parameters": {
-									"SourceFileName": {
-										"value": "@pipeline().parameters.Filename",
-										"type": "Expression"
-									},
+									"SourceFileName": "Bulk",
 									"AccountNo_Ref": "Bulk",
 									"ProcessingTimestamp": {
 										"value": "@pipeline().parameters.ProcessingTimeStamp",
