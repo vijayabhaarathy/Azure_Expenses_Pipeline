@@ -1,0 +1,95 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Historical_Source_CSV",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SinkDB_BulkUpload",
+						"type": "DatasetReference"
+					},
+					"name": "sinkSQL"
+				}
+			],
+			"transformations": [
+				{
+					"name": "deriveDate"
+				},
+				{
+					"name": "deriveMetadata"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          CardName as string,",
+				"          AccountType as string,",
+				"          TransactionDate as string,",
+				"          Description as string,",
+				"          Amount as string,",
+				"          ExpenseType as string,",
+				"          SubCategory as string,",
+				"          Category as string,",
+				"          AccountNo_Ref as string,",
+				"          StatementDate as string,",
+				"          SourceFileName as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(TransactionDate_fixed = toDate(TransactionDate, 'dd-MM-yyyy')) ~> deriveDate",
+				"deriveDate derive(SourceFileName = ERROR_FUNCTION(''),",
+				"          ProcessingTimestamp = ERROR_FUNCTION(''),",
+				"          AccountNo_Ref = ERROR_FUNCTION('')) ~> deriveMetadata",
+				"deriveMetadata sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Id as integer,",
+				"          TransactionDate as date,",
+				"          Description as string,",
+				"          Amount as decimal(18,2),",
+				"          ExpenseType as string,",
+				"          CardName as string,",
+				"          AccountType as string,",
+				"          Category as string,",
+				"          SubCategory as string,",
+				"          AccountNo_Ref as string,",
+				"          SourceFileName as string,",
+				"          ProcessingTimestamp as timestamp,",
+				"          StatementDate as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          TransactionDate = TransactionDate_fixed,",
+				"          Description,",
+				"          Amount,",
+				"          ExpenseType,",
+				"          CardName,",
+				"          AccountType,",
+				"          Category,",
+				"          SubCategory,",
+				"          AccountNo_Ref,",
+				"          SourceFileName,",
+				"          ProcessingTimestamp,",
+				"          StatementDate",
+				"     )) ~> sinkSQL"
+			]
+		}
+	}
+}
