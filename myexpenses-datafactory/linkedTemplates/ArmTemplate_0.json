@@ -80,65 +80,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_Historical_Source')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_Historical_Blob_Source",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Excel",
-				"typeProperties": {
-					"sheetName": "Extract",
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "BulkUpload_2025_Jan-Mar.xlsx",
-						"container": "myexpenses-bulkupload"
-					},
-					"firstRowAsHeader": true
-				},
-				"schema": [
-					{
-						"name": "CardName",
-						"type": "String"
-					},
-					{
-						"name": "AccountType",
-						"type": "String"
-					},
-					{
-						"name": "TransactionDate",
-						"type": "String"
-					},
-					{
-						"name": "Description",
-						"type": "String"
-					},
-					{
-						"name": "Amount",
-						"type": "String"
-					},
-					{
-						"name": "ExpenseType",
-						"type": "String"
-					},
-					{
-						"name": "SubCategory",
-						"type": "String"
-					},
-					{
-						"name": "Category",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_Historical_Blob_Source')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_Historical_Source_CSV')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -149,8 +90,7 @@
 				},
 				"parameters": {
 					"Filename": {
-						"type": "string",
-						"defaultValue": "@dataset().Filename"
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -489,7 +429,10 @@
 								"referenceName": "DS_Historical_Source_CSV",
 								"type": "DatasetReference",
 								"parameters": {
-									"Filename": "@pipeline().parameters.Filename"
+									"Filename": {
+										"value": "@pipeline().parameters.Filename",
+										"type": "Expression"
+									}
 								}
 							}
 						],
@@ -498,8 +441,11 @@
 								"referenceName": "SinkDB_BulkUpload",
 								"type": "DatasetReference",
 								"parameters": {
-									"SourceFileName": "Historical_Bulk_Load",
-									"AccountNo_Ref": "HISTORICAL_ACC_REF"
+									"SourceFileName": {
+										"value": "@pipeline().parameters.Filename",
+										"type": "Expression"
+									},
+									"AccountNo_Ref": "Bulk"
 								}
 							}
 						]
