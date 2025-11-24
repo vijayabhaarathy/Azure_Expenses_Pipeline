@@ -185,8 +185,8 @@
 						"referenceName": "DS_Historical_Source_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"Filename": {
-								"value": "@pipeline().parameters.Filename",
+							"SourceFileName": {
+								"value": "@pipeline().parameters.SourceFileName",
 								"type": "Expression"
 							}
 						}
@@ -213,7 +213,7 @@
 				"type": "String",
 				"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
 			},
-			"Filename": {
+			"SourceFileName": {
 				"type": "string"
 			}
 		},
