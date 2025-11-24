@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"SourceFileName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Bulk"
 			},
 			"AccountNo_Ref": {
 				"type": "string",
