@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
+				"name": "Data flow - TransactionDate",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,206 +15,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": false,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference"
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
 					},
-					"enableStaging": false,
-					"enableSkipIncompatibleRow": false,
-					"logSettings": {
-						"enableCopyActivityLog": true,
-						"copyActivityLogSettings": {
-							"logLevel": "Warning",
-							"enableReliableLogging": true
-						},
-						"logLocationSettings": {
-							"linkedServiceName": {
-								"referenceName": "LS_Historical_Blob_Source",
-								"type": "LinkedServiceReference"
-							},
-							"path": "logs"
-						}
-					},
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "TransactionDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "@{formatDateTime(parseDate(item().TransactionDate, 'dd-MM-yyyy'), 'yyyy-MM-dd')}",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "Description",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Description",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Amount",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Amount",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 18
-								}
-							},
-							{
-								"source": {
-									"name": "ExpenseType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "ExpenseType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "CardName",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "CardName",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "AccountType",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AccountType",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Category",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Category",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "SubCategory",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "SubCategory",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "AccountNo_Ref",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "AccountNo_Ref",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "StatementDate",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "StatementDate",
-									"type": "Date",
-									"physicalType": "date"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_Historical_Source_CSV",
-						"type": "DatasetReference",
-						"parameters": {
-							"Filename": {
-								"value": "@pipeline().parameters.SourceFileName",
-								"type": "Expression"
-							},
-							"ProcessingTimestamp": {
-								"value": "@pipeline().parameters.ProcessingTimeStamp",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "SinkDB_BulkUpload",
-						"type": "DatasetReference",
-						"parameters": {
-							"AccountNo_Ref": {
-								"value": "@pipeline().parameters.AccountNo_Ref",
-								"type": "Expression"
-							},
-							"ProcessingTimestamp": {
-								"value": "@pipeline().parameters.ProcessingTimeStamp",
-								"type": "Expression"
-							},
-							"SourceFileName": {
-								"value": "@pipeline().parameters.SourceFileName",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"parameters": {
