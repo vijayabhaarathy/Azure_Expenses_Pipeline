@@ -84,7 +84,7 @@
 								"sqlWriterUseTableLock": false
 							},
 							"enableStaging": false,
-							"enableSkipIncompatibleRow": false,
+							"enableSkipIncompatibleRow": true,
 							"logSettings": {
 								"enableCopyActivityLog": true,
 								"copyActivityLogSettings": {
