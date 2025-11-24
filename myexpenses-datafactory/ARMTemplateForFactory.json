@@ -243,6 +243,10 @@
 									"ProcessingTimestamp": {
 										"value": "@pipeline().parameters.ProcessingTimeStamp",
 										"type": "Expression"
+									},
+									"SourceFileName": {
+										"value": "@pipeline().parameters.SourceFileName",
+										"type": "Expression"
 									}
 								}
 							}
@@ -309,6 +313,9 @@
 						"defaultValue": "@dataset().FileName"
 					},
 					"ProcessingTimestamp": {
+						"type": "string"
+					},
+					"SourceFileName": {
 						"type": "string"
 					}
 				},
