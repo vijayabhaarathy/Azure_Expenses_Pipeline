@@ -6,10 +6,6 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"SourceFileName": {
-				"type": "string",
-				"defaultValue": "@dataset().SourceFileName"
-			},
 			"AccountNo_Ref": {
 				"type": "string",
 				"defaultValue": "Bulk"
