@@ -10,8 +10,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"ProcessingTimeStamp": "@trigger().startTime",
-					"SourceFileName": "@triggerBody().fileName"
+					"ProcessingTimeStamp": "@trigger().startTime"
 				}
 			}
 		],
