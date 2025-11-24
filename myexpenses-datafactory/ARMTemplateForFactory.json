@@ -265,7 +265,8 @@
 						"defaultValue": "formatDateTime(currentUtcDateTime(),'yyyy-MM-dd HH:mm:ss')"
 					},
 					"SourceFileName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "Bulk"
 					}
 				},
 				"annotations": [],
