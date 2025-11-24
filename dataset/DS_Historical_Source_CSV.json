@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@dataset().Filename",
+					"value": "@dataset().SourceFileName",
 					"type": "Expression"
 				},
 				"container": "myexpenses-bulkupload"
