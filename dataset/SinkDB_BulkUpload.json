@@ -8,14 +8,15 @@
 		"parameters": {
 			"SourceFileName": {
 				"type": "string",
-				"defaultValue": "Bulk"
+				"defaultValue": "@dataset().SourceFileName"
 			},
 			"AccountNo_Ref": {
 				"type": "string",
 				"defaultValue": "Bulk"
 			},
 			"ProcessingTimestamp": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "@dataset().ProcessingTimestamp"
 			}
 		},
 		"annotations": [],
