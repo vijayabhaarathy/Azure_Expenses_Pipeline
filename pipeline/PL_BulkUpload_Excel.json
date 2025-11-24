@@ -201,7 +201,11 @@
 								"value": "@pipeline().parameters.Filename",
 								"type": "Expression"
 							},
-							"AccountNo_Ref": "Bulk"
+							"AccountNo_Ref": "Bulk",
+							"ProcessingTimestamp": {
+								"value": "@pipeline().parameters.ProcessingTimeStamp",
+								"type": "Expression"
+							}
 						}
 					}
 				]

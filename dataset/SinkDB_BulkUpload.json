@@ -7,12 +7,13 @@
 		},
 		"parameters": {
 			"SourceFileName": {
-				"type": "string",
-				"defaultValue": "Historical_Bulk_Load"
+				"type": "string"
 			},
 			"AccountNo_Ref": {
-				"type": "string",
-				"defaultValue": "HISTORICAL_ACC_REF"
+				"type": "string"
+			},
+			"ProcessingTimestamp": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
