@@ -219,6 +219,14 @@
 											"type": "Date",
 											"physicalType": "date"
 										}
+									},
+									{
+										"source": {
+											"name": "SourceFileName"
+										},
+										"sink": {
+											"name": "SourceFileName"
+										}
 									}
 								],
 								"typeConversion": true,
