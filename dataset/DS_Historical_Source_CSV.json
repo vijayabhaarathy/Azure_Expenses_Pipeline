@@ -12,9 +12,6 @@
 			},
 			"ProcessingTimestamp": {
 				"type": "string"
-			},
-			"SourceFileName": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
