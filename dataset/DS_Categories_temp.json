@@ -1,0 +1,36 @@
+{
+	"name": "DS_Categories_temp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Historical_Blob_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Categories_25Nov.csv",
+				"container": "myexpenses-categories-tempdb"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Id",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "SubCategory",
+				"type": "String"
+			}
+		]
+	}
+}
