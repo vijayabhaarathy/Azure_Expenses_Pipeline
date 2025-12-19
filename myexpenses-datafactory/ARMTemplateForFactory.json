@@ -318,7 +318,7 @@
 								"type": "DelimitedTextSource",
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
+									"recursive": false,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -382,7 +382,12 @@
 							{
 								"referenceName": "DS_Categories_temp",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"Filename": {
+										"value": "@pipeline().parameters.Filename",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -418,12 +423,20 @@
 					"referenceName": "LS_Historical_Blob_Source",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"Filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "Categories_25Nov.csv",
+						"fileName": {
+							"value": "@dataset().Filename",
+							"type": "Expression"
+						},
 						"container": "myexpenses-categories-tempdb"
 					},
 					"columnDelimiter": ",",
