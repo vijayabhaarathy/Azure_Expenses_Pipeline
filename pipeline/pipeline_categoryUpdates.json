@@ -82,7 +82,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_Categories_temp",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": {
+								"value": "@pipeline().parameters.Filename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
