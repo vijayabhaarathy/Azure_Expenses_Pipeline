@@ -19,6 +19,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Historical_Blob_Source'"
 		},
+		"SouceFile_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SouceFile'"
+		},
+		"AzureSqlDatabase2_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase2'"
+		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "myexpenses-db-server.database.windows.net"
@@ -59,6 +67,18 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
 		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "myexpenses-db-server.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "myexpenses_db"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "CloudSAac3e3eda"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -95,6 +115,12 @@
 					"LS_Historical_Blob_Source_connectionString": {
 						"value": "[parameters('LS_Historical_Blob_Source_connectionString')]"
 					},
+					"SouceFile_connectionString": {
+						"value": "[parameters('SouceFile_connectionString')]"
+					},
+					"AzureSqlDatabase2_password": {
+						"value": "[parameters('AzureSqlDatabase2_password')]"
+					},
 					"AzureSqlDatabase1_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
 					},
@@ -112,6 +138,15 @@
 					},
 					"LS_AzureSQL_Expense_Sink_properties_typeProperties_userName": {
 						"value": "[parameters('LS_AzureSQL_Expense_Sink_properties_typeProperties_userName')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase2_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase2_properties_typeProperties_userName')]"
 					},
 					"bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp": {
 						"value": "[parameters('bulkupload_trigger_properties_PL_BulkUpload_Excel_parameters_ProcessingTimeStamp')]"
