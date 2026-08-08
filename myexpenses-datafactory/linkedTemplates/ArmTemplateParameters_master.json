@@ -8,6 +8,9 @@
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
 		"LS_AzureSQL_Expense_Sink_password": {
 			"value": ""
 		},
@@ -17,9 +20,6 @@
 		"SouceFile_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase2_password": {
-			"value": ""
-		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "myexpenses-db-server.database.windows.net"
 		},
@@ -27,6 +27,15 @@
 			"value": "myexpenses_db"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "CloudSAac3e3eda"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "myexpenses-db-server.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "myexpenses_db"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
 			"value": "CloudSAac3e3eda"
 		},
 		"LS_AzureSQL_Expense_Sink_properties_typeProperties_server": {
@@ -49,15 +58,6 @@
 		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
-		},
-		"AzureSqlDatabase2_properties_typeProperties_server": {
-			"value": "myexpenses-db-server.database.windows.net"
-		},
-		"AzureSqlDatabase2_properties_typeProperties_database": {
-			"value": "myexpenses_db"
-		},
-		"AzureSqlDatabase2_properties_typeProperties_userName": {
-			"value": "CloudSAac3e3eda"
 		},
 		"containerUri": {
 			"value": ""
