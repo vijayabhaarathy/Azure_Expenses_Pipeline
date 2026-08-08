@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "myexpenses-merchant-master//MerchantMaster.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.MerchantMaster"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
