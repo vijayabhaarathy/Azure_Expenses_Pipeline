@@ -38,7 +38,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "MerchantMapping_Staging"
+			"table": "MerchantMapping"
 		}
 	}
 }
