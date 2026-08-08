@@ -5,14 +5,23 @@
 		"factoryName": {
 			"value": "myexpenses-datafactory"
 		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
 		"LS_AzureSQL_Expense_Sink_password": {
 			"value": ""
 		},
 		"LS_Historical_Blob_Source_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_password": {
-			"value": ""
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "myexpenses-db-server.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "myexpenses_db"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "CloudSAac3e3eda"
 		},
 		"LS_AzureSQL_Expense_Sink_properties_typeProperties_server": {
 			"value": "myexpenses-db-server.database.windows.net"
@@ -34,15 +43,6 @@
 		},
 		"bulkupload_trigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_server": {
-			"value": "myexpenses-db-server.database.windows.net"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_database": {
-			"value": "myexpenses_db"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_userName": {
-			"value": "CloudSAac3e3eda"
 		},
 		"containerUri": {
 			"value": ""
