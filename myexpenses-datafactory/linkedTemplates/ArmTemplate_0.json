@@ -277,7 +277,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "MerchantMapping"
+					"table": "MerchantMapping_Staging"
 				}
 			},
 			"dependsOn": [
