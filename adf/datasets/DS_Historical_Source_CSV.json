@@ -1,0 +1,85 @@
+{
+    "etag":  "97027916-0000-0300-0000-69244fb90000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/datasets/DS_Historical_Source_CSV",
+    "name":  "DS_Historical_Source_CSV",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "linkedServiceName":  {
+                                                 "referenceName":  "LS_Historical_Blob_Source",
+                                                 "type":  "LinkedServiceReference"
+                                             },
+                       "parameters":  {
+                                          "Filename":  {
+                                                           "defaultValue":  "@dataset().FileName",
+                                                           "type":  "string"
+                                                       },
+                                          "ProcessingTimestamp":  {
+                                                                      "type":  "string"
+                                                                  }
+                                      },
+                       "schema":  [
+                                      {
+                                          "name":  "CardName",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "AccountType",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "TransactionDate",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "Description",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "Amount",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "ExpenseType",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "SubCategory",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "Category",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "AccountNo_Ref",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "StatementDate",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "SourceFileName",
+                                          "type":  "String"
+                                      }
+                                  ],
+                       "type":  "DelimitedText",
+                       "typeProperties":  {
+                                              "columnDelimiter":  ",",
+                                              "escapeChar":  "\\",
+                                              "firstRowAsHeader":  true,
+                                              "location":  {
+                                                               "container":  "myexpenses-bulkupload",
+                                                               "fileName":  {
+                                                                                "type":  "Expression",
+                                                                                "value":  "@dataset().Filename"
+                                                                            },
+                                                               "type":  "AzureBlobStorageLocation"
+                                                           },
+                                              "quoteChar":  "\""
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/datasets"
+}

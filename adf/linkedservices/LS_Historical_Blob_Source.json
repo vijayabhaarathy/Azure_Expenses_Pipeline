@@ -1,0 +1,16 @@
+{
+    "etag":  "320029ef-0000-0300-0000-68e252d00000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/linkedservices/LS_Historical_Blob_Source",
+    "name":  "LS_Historical_Blob_Source",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "type":  "AzureBlobStorage",
+                       "typeProperties":  {
+                                              "connectionString":  "\u003cREDACTED: configure via Key Vault or deployment parameter\u003e",
+                                              "encryptedCredential":  "\u003cREDACTED: configure via Key Vault or deployment parameter\u003e"
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/linkedservices"
+}

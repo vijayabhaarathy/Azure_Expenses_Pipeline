@@ -1,0 +1,21 @@
+{
+    "etag":  "3400bb4b-0000-0300-0000-68e25a2c0000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/linkedservices/LS_AzureSQL_Expense_Sink",
+    "name":  "LS_AzureSQL_Expense_Sink",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "type":  "AzureSqlDatabase",
+                       "typeProperties":  {
+                                              "authenticationType":  "SQL",
+                                              "database":  "myexpenses_db",
+                                              "encrypt":  "mandatory",
+                                              "encryptedCredential":  "\u003cREDACTED: configure via Key Vault or deployment parameter\u003e",
+                                              "server":  "myexpenses-db-server.database.windows.net",
+                                              "trustServerCertificate":  false,
+                                              "userName":  "CloudSAac3e3eda"
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/linkedservices"
+}

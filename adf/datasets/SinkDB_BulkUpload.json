@@ -1,0 +1,89 @@
+{
+    "etag":  "9202f330-0000-0300-0000-692438ef0000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/datasets/SinkDB_BulkUpload",
+    "name":  "SinkDB_BulkUpload",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "linkedServiceName":  {
+                                                 "referenceName":  "LS_AzureSQL_Expense_Sink",
+                                                 "type":  "LinkedServiceReference"
+                                             },
+                       "parameters":  {
+                                          "AccountNo_Ref":  {
+                                                                "type":  "string"
+                                                            },
+                                          "ProcessingTimestamp":  {
+                                                                      "type":  "string"
+                                                                  },
+                                          "SourceFileName":  {
+                                                                 "type":  "string"
+                                                             }
+                                      },
+                       "schema":  [
+                                      {
+                                          "name":  "Id",
+                                          "precision":  10,
+                                          "type":  "int"
+                                      },
+                                      {
+                                          "name":  "TransactionDate",
+                                          "type":  "date"
+                                      },
+                                      {
+                                          "name":  "Description",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "Amount",
+                                          "precision":  18,
+                                          "scale":  2,
+                                          "type":  "decimal"
+                                      },
+                                      {
+                                          "name":  "ExpenseType",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "CardName",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "AccountType",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "Category",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "SubCategory",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "AccountNo_Ref",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "SourceFileName",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "ProcessingTimestamp",
+                                          "scale":  7,
+                                          "type":  "datetime2"
+                                      },
+                                      {
+                                          "name":  "StatementDate",
+                                          "type":  "date"
+                                      }
+                                  ],
+                       "type":  "AzureSqlTable",
+                       "typeProperties":  {
+                                              "schema":  "dbo",
+                                              "table":  "Transactions"
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,49 @@
+{
+    "etag":  "580364e6-0000-0300-0000-6944fcf70000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/datasets/DS_Categories_temp",
+    "name":  "DS_Categories_temp",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "linkedServiceName":  {
+                                                 "referenceName":  "LS_Historical_Blob_Source",
+                                                 "type":  "LinkedServiceReference"
+                                             },
+                       "parameters":  {
+                                          "Filename":  {
+                                                           "type":  "string"
+                                                       }
+                                      },
+                       "schema":  [
+                                      {
+                                          "name":  "Id",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "Category",
+                                          "type":  "String"
+                                      },
+                                      {
+                                          "name":  "SubCategory",
+                                          "type":  "String"
+                                      }
+                                  ],
+                       "type":  "DelimitedText",
+                       "typeProperties":  {
+                                              "columnDelimiter":  ",",
+                                              "escapeChar":  "\\",
+                                              "firstRowAsHeader":  true,
+                                              "location":  {
+                                                               "container":  "myexpenses-categories-tempdb",
+                                                               "fileName":  {
+                                                                                "type":  "Expression",
+                                                                                "value":  "@dataset().Filename"
+                                                                            },
+                                                               "type":  "AzureBlobStorageLocation"
+                                                           },
+                                              "quoteChar":  "\""
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/datasets"
+}

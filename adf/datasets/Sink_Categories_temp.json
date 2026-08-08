@@ -1,0 +1,35 @@
+{
+    "etag":  "d30264a3-0000-0300-0000-6925802b0000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/datasets/Sink_Categories_temp",
+    "name":  "Sink_Categories_temp",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "linkedServiceName":  {
+                                                 "referenceName":  "LS_AzureSQL_Expense_Sink",
+                                                 "type":  "LinkedServiceReference"
+                                             },
+                       "schema":  [
+                                      {
+                                          "name":  "Id",
+                                          "precision":  10,
+                                          "type":  "int"
+                                      },
+                                      {
+                                          "name":  "Category",
+                                          "type":  "nvarchar"
+                                      },
+                                      {
+                                          "name":  "SubCategory",
+                                          "type":  "nvarchar"
+                                      }
+                                  ],
+                       "type":  "AzureSqlTable",
+                       "typeProperties":  {
+                                              "schema":  "dbo",
+                                              "table":  "CategoryUpdates"
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,24 @@
+# Financial data and statement source files must never be committed.
+*.pdf
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.pbix
+
+# Credentials, tokens, and local configuration.
+.env
+.env.*
+!.env.example
+*.pfx
+*.pem
+*.key
+*.cer
+secrets/
+
+# Azure and tool caches.
+.azure/
+.tools/
+bin/
+obj/
+*.log

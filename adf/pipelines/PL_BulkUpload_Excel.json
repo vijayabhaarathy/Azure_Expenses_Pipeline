@@ -1,0 +1,251 @@
+{
+    "etag":  "a202b022-0000-0300-0000-69247bbd0000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/pipelines/PL_BulkUpload_Excel",
+    "name":  "PL_BulkUpload_Excel",
+    "properties":  {
+                       "activities":  [
+                                          {
+                                              "dependsOn":  [
+
+                                                            ],
+                                              "inputs":  [
+                                                             {
+                                                                 "parameters":  {
+                                                                                    "Filename":  {
+                                                                                                     "type":  "Expression",
+                                                                                                     "value":  "@pipeline().parameters.SourceFileName"
+                                                                                                 },
+                                                                                    "ProcessingTimestamp":  {
+                                                                                                                "type":  "Expression",
+                                                                                                                "value":  "@pipeline().parameters.ProcessingTimeStamp"
+                                                                                                            }
+                                                                                },
+                                                                 "referenceName":  "DS_Historical_Source_CSV",
+                                                                 "type":  "DatasetReference"
+                                                             }
+                                                         ],
+                                              "name":  "Copy data1",
+                                              "outputs":  [
+                                                              {
+                                                                  "parameters":  {
+                                                                                     "AccountNo_Ref":  {
+                                                                                                           "type":  "Expression",
+                                                                                                           "value":  "@pipeline().parameters.AccountNo_Ref"
+                                                                                                       },
+                                                                                     "ProcessingTimestamp":  {
+                                                                                                                 "type":  "Expression",
+                                                                                                                 "value":  "@pipeline().parameters.ProcessingTimeStamp"
+                                                                                                             },
+                                                                                     "SourceFileName":  {
+                                                                                                            "type":  "Expression",
+                                                                                                            "value":  "@pipeline().parameters.SourceFileName"
+                                                                                                        }
+                                                                                 },
+                                                                  "referenceName":  "SinkDB_BulkUpload",
+                                                                  "type":  "DatasetReference"
+                                                              }
+                                                          ],
+                                              "policy":  {
+                                                             "retry":  0,
+                                                             "retryIntervalInSeconds":  30,
+                                                             "secureInput":  false,
+                                                             "secureOutput":  false,
+                                                             "timeout":  "0.12:00:00"
+                                                         },
+                                              "type":  "Copy",
+                                              "typeProperties":  {
+                                                                     "enableSkipIncompatibleRow":  true,
+                                                                     "enableStaging":  false,
+                                                                     "logSettings":  {
+                                                                                         "copyActivityLogSettings":  {
+                                                                                                                         "enableReliableLogging":  true,
+                                                                                                                         "logLevel":  "Info"
+                                                                                                                     },
+                                                                                         "enableCopyActivityLog":  true,
+                                                                                         "logLocationSettings":  {
+                                                                                                                     "linkedServiceName":  {
+                                                                                                                                               "referenceName":  "LS_Historical_Blob_Source",
+                                                                                                                                               "type":  "LinkedServiceReference"
+                                                                                                                                           },
+                                                                                                                     "path":  "logs"
+                                                                                                                 }
+                                                                                     },
+                                                                     "sink":  {
+                                                                                  "sqlWriterUseTableLock":  false,
+                                                                                  "type":  "AzureSqlSink",
+                                                                                  "writeBehavior":  "insert"
+                                                                              },
+                                                                     "source":  {
+                                                                                    "formatSettings":  {
+                                                                                                           "type":  "DelimitedTextReadSettings"
+                                                                                                       },
+                                                                                    "storeSettings":  {
+                                                                                                          "enablePartitionDiscovery":  false,
+                                                                                                          "recursive":  false,
+                                                                                                          "type":  "AzureBlobStorageReadSettings"
+                                                                                                      },
+                                                                                    "type":  "DelimitedTextSource"
+                                                                                },
+                                                                     "translator":  {
+                                                                                        "mappings":  [
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "TransactionDate",
+                                                                                                                          "physicalType":  "date",
+                                                                                                                          "type":  "Date"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "TransactionDate",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "Description",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "Description",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "Amount",
+                                                                                                                          "physicalType":  "decimal",
+                                                                                                                          "precision":  18,
+                                                                                                                          "scale":  2,
+                                                                                                                          "type":  "Decimal"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "Amount",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "ExpenseType",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "ExpenseType",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "CardName",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "CardName",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "AccountType",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "AccountType",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "Category",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "Category",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "SubCategory",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "SubCategory",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "AccountNo_Ref",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "AccountNo_Ref",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "StatementDate",
+                                                                                                                          "physicalType":  "date",
+                                                                                                                          "type":  "Date"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "StatementDate",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         }
+                                                                                                     ],
+                                                                                        "type":  "TabularTranslator",
+                                                                                        "typeConversion":  true,
+                                                                                        "typeConversionSettings":  {
+                                                                                                                       "allowDataTruncation":  true,
+                                                                                                                       "treatBooleanAsNumber":  false
+                                                                                                                   }
+                                                                                    }
+                                                                 },
+                                              "userProperties":  [
+
+                                                                 ]
+                                          }
+                                      ],
+                       "annotations":  [
+
+                                       ],
+                       "lastPublishTime":  "2025-11-24T15:37:33Z",
+                       "parameters":  {
+                                          "AccountNo_Ref":  {
+                                                                "defaultValue":  "Bulk",
+                                                                "type":  "String"
+                                                            },
+                                          "ProcessingTimeStamp":  {
+                                                                      "defaultValue":  "formatDateTime(currentUtcDateTime(),\u0027yyyy-MM-dd HH:mm:ss\u0027)",
+                                                                      "type":  "String"
+                                                                  },
+                                          "SourceFileName":  {
+                                                                 "type":  "String"
+                                                             }
+                                      },
+                       "policy":  {
+                                      "elapsedTimeMetric":  {
+
+                                                            }
+                                  }
+                   },
+    "type":  "Microsoft.DataFactory/factories/pipelines"
+}

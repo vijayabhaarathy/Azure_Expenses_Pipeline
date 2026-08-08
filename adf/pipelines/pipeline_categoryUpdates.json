@@ -1,0 +1,127 @@
+{
+    "etag":  "58037de6-0000-0300-0000-6944fcf80000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/pipelines/pipeline_categoryUpdates",
+    "name":  "pipeline_categoryUpdates",
+    "properties":  {
+                       "activities":  [
+                                          {
+                                              "dependsOn":  [
+
+                                                            ],
+                                              "inputs":  [
+                                                             {
+                                                                 "parameters":  {
+                                                                                    "Filename":  {
+                                                                                                     "type":  "Expression",
+                                                                                                     "value":  "@pipeline().parameters.Filename"
+                                                                                                 }
+                                                                                },
+                                                                 "referenceName":  "DS_Categories_temp",
+                                                                 "type":  "DatasetReference"
+                                                             }
+                                                         ],
+                                              "name":  "Copy data1",
+                                              "outputs":  [
+                                                              {
+                                                                  "parameters":  {
+
+                                                                                 },
+                                                                  "referenceName":  "Sink_Categories_temp",
+                                                                  "type":  "DatasetReference"
+                                                              }
+                                                          ],
+                                              "policy":  {
+                                                             "retry":  0,
+                                                             "retryIntervalInSeconds":  30,
+                                                             "secureInput":  false,
+                                                             "secureOutput":  false,
+                                                             "timeout":  "0.12:00:00"
+                                                         },
+                                              "type":  "Copy",
+                                              "typeProperties":  {
+                                                                     "enableStaging":  false,
+                                                                     "sink":  {
+                                                                                  "sqlWriterUseTableLock":  false,
+                                                                                  "type":  "AzureSqlSink",
+                                                                                  "writeBehavior":  "insert"
+                                                                              },
+                                                                     "source":  {
+                                                                                    "formatSettings":  {
+                                                                                                           "type":  "DelimitedTextReadSettings"
+                                                                                                       },
+                                                                                    "storeSettings":  {
+                                                                                                          "enablePartitionDiscovery":  false,
+                                                                                                          "recursive":  false,
+                                                                                                          "type":  "AzureBlobStorageReadSettings"
+                                                                                                      },
+                                                                                    "type":  "DelimitedTextSource"
+                                                                                },
+                                                                     "translator":  {
+                                                                                        "mappings":  [
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "Id",
+                                                                                                                          "physicalType":  "int",
+                                                                                                                          "type":  "Int32"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "Id",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "Category",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "Category",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "sink":  {
+                                                                                                                          "name":  "SubCategory",
+                                                                                                                          "physicalType":  "nvarchar",
+                                                                                                                          "type":  "String"
+                                                                                                                      },
+                                                                                                             "source":  {
+                                                                                                                            "name":  "SubCategory",
+                                                                                                                            "physicalType":  "String",
+                                                                                                                            "type":  "String"
+                                                                                                                        }
+                                                                                                         }
+                                                                                                     ],
+                                                                                        "type":  "TabularTranslator",
+                                                                                        "typeConversion":  true,
+                                                                                        "typeConversionSettings":  {
+                                                                                                                       "allowDataTruncation":  true,
+                                                                                                                       "treatBooleanAsNumber":  false
+                                                                                                                   }
+                                                                                    }
+                                                                 },
+                                              "userProperties":  [
+
+                                                                 ]
+                                          }
+                                      ],
+                       "annotations":  [
+
+                                       ],
+                       "lastPublishTime":  "2025-12-19T07:21:28Z",
+                       "parameters":  {
+                                          "Filename":  {
+                                                           "type":  "string"
+                                                       }
+                                      },
+                       "policy":  {
+                                      "elapsedTimeMetric":  {
+
+                                                            }
+                                  }
+                   },
+    "type":  "Microsoft.DataFactory/factories/pipelines"
+}

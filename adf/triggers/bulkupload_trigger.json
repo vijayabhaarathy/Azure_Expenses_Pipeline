@@ -1,0 +1,34 @@
+{
+    "etag":  "9202d533-0000-0300-0000-692438fe0000",
+    "id":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.DataFactory/factories/myexpenses-datafactory/triggers/bulkupload_trigger",
+    "name":  "bulkupload_trigger",
+    "properties":  {
+                       "annotations":  [
+
+                                       ],
+                       "pipelines":  [
+                                         {
+                                             "parameters":  {
+                                                                "AccountNo_Ref":  "Bulk",
+                                                                "ProcessingTimeStamp":  "@trigger().startTime",
+                                                                "SourceFileName":  "@triggerBody().fileName"
+                                                            },
+                                             "pipelineReference":  {
+                                                                       "referenceName":  "PL_BulkUpload_Excel",
+                                                                       "type":  "PipelineReference"
+                                                                   }
+                                         }
+                                     ],
+                       "runtimeState":  "Started",
+                       "type":  "BlobEventsTrigger",
+                       "typeProperties":  {
+                                              "blobPathBeginsWith":  "/myexpenses-bulkupload/blobs/",
+                                              "events":  [
+                                                             "Microsoft.Storage.BlobCreated"
+                                                         ],
+                                              "ignoreEmptyBlobs":  true,
+                                              "scope":  "/subscriptions/dc047e3c-dc08-457f-92cc-3a531d30bb7b/resourceGroups/myexpenses-suite-rg/providers/Microsoft.Storage/storageAccounts/myexpensesstorageacc"
+                                          }
+                   },
+    "type":  "Microsoft.DataFactory/factories/triggers"
+}
