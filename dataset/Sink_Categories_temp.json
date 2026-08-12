@@ -1,0 +1,30 @@
+{
+	"name": "Sink_Categories_temp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL_Expense_Sink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SubCategory",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CategoryUpdates"
+		}
+	}
+}
