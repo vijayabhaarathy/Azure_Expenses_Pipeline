@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "MerchantMaster.csv",
+				"fileName": "MerchantMaster_12Aug.csv",
 				"container": "myexpenses-merchant-master"
 			},
 			"columnDelimiter": ",",
