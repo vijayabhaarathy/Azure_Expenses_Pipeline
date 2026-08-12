@@ -1,4 +1,4 @@
-CREATE   PROCEDURE dbo.usp_NormalizeDescriptions
+CREATE or ALTER PROCEDURE dbo.usp_NormalizeDescriptions
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -69,6 +69,32 @@ BEGIN
     UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'NET BANKING', '') WHERE ISNULL(Status, '') <> 'DONE';
     UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'CREDIT CARD PAYMENT', 'CC PAYMENT') WHERE ISNULL(Status, '') <> 'DONE';
 
+    -- Normalize common UPI transfer patterns
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'WDL TFR UPI DR ', '') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'WDL TFR ', '') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'UPI DR ', '') WHERE ISNULL(Status, '') <> 'DONE';
+    
+    -- Remove common bank routing tokens
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' UTIB ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' HDFC ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' ICIC ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' YESB ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' RATN ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    
+    -- Remove UPI routing fragments
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' UPIIN ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' UPI ', ' ') WHERE ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, ' AT NALLUR', '') WHERE ISNULL(Status, '') <> 'DONE';
+    
+    -- Normalize recurring savings-account merchants
+    UPDATE dbo.Transactions SET NormalizedDescription = 'AMAZON' WHERE NormalizedDescription LIKE '%AMAZON%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'SWIGGY' WHERE NormalizedDescription LIKE '%SWIGGY%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'ZEPTO' WHERE NormalizedDescription LIKE '%ZEPTO%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'BLINKIT' WHERE NormalizedDescription LIKE '%BLINKIT%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'ZERODHA' WHERE NormalizedDescription LIKE '%ZERODHA%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'HALLI THOTA' WHERE NormalizedDescription LIKE '%HALLI TH%' AND ISNULL(Status, '') <> 'DONE';
+    UPDATE dbo.Transactions SET NormalizedDescription = 'MONTHLY SAVINGS' WHERE NormalizedDescription LIKE '%SI MONTHLY SAVINGS%' AND ISNULL(Status, '') <> 'DONE';
+    
     -- Canonical merchant normalization
     UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'LIFE STYLE INTERNATIONA', 'LIFESTYLE') WHERE ISNULL(Status, '') <> 'DONE';
     UPDATE dbo.Transactions SET NormalizedDescription = REPLACE(NormalizedDescription, 'SWIGGY KA', 'SWIGGY') WHERE ISNULL(Status, '') <> 'DONE';
