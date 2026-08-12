@@ -695,9 +695,7 @@
 										"sink": {
 											"name": "Amount",
 											"type": "Decimal",
-											"physicalType": "decimal",
-											"scale": 2,
-											"precision": 18
+											"physicalType": "decimal"
 										}
 									},
 									{
