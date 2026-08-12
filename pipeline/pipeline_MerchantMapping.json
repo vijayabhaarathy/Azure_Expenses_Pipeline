@@ -29,8 +29,8 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"sqlWriterStoredProcedureName": "[dbo].[usp_InsertMerchantMapping]",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
