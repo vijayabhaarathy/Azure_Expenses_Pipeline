@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "copy-merchantmaster",
+				"description": "Select last merchant master file in Source",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
