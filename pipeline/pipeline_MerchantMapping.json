@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy data1",
+				"description": "Select the csv file in Source",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
