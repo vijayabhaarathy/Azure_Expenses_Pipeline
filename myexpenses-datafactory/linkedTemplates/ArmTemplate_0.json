@@ -670,7 +670,8 @@
 								"upsertSettings": {
 									"useTempDB": true,
 									"keys": [
-										"MerchantName"
+										"MerchantName",
+										"Amount"
 									]
 								},
 								"sqlWriterUseTableLock": false,
