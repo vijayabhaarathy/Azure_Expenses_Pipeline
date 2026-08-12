@@ -228,7 +228,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "MerchantMaster"
+					"table": "MerchantMaster_Staging"
 				}
 			},
 			"dependsOn": [
@@ -666,14 +666,7 @@
 							},
 							"sink": {
 								"type": "AzureSqlSink",
-								"writeBehavior": "upsert",
-								"upsertSettings": {
-									"useTempDB": true,
-									"keys": [
-										"MerchantName",
-										"Amount"
-									]
-								},
+								"writeBehavior": "insert",
 								"sqlWriterUseTableLock": false,
 								"disableMetricsCollection": false
 							},
