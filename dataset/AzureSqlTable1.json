@@ -48,7 +48,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "MerchantMaster"
+			"table": "MerchantMaster_Staging"
 		}
 	}
 }
