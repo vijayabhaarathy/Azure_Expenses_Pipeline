@@ -506,21 +506,25 @@
 									{
 										"source": {
 											"name": "NormalizedDescription",
-											"type": "String"
+											"type": "String",
+											"physicalType": "String"
 										},
 										"sink": {
 											"name": "NormalizedDescription",
-											"type": "nvarchar"
+											"type": "String",
+											"physicalType": "nvarchar"
 										}
 									},
 									{
 										"source": {
-											"name": "Merchant Name",
-											"type": "String"
+											"name": "MerchantName",
+											"type": "String",
+											"physicalType": "String"
 										},
 										"sink": {
 											"name": "MerchantName",
-											"type": "nvarchar"
+											"type": "String",
+											"physicalType": "nvarchar"
 										}
 									}
 								],
