@@ -83,7 +83,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable2",
+						"referenceName": "MerchantMapping",
 						"type": "DatasetReference"
 					}
 				]

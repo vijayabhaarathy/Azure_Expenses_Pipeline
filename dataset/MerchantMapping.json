@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable2",
+	"name": "MerchantMapping",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase2",

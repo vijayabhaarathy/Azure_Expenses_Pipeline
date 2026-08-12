@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable1",
+	"name": "MerchantMaster_Staging",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
